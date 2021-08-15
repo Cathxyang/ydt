@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int maxPro = 0, miniPrices = 1e9;
+        for(int pri : prices){
+            maxPro = max(maxPro, pri - miniPrices);
+            miniPrices = min(miniPrices, pri);
+        }
+        return maxPro;
+    }
+};
