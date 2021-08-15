@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        unordered_map <char, int> words;
+        for(char w : ransomNote){
+            words[w]++;
+        }
+        for(char w : magazine){
+            if(words[w]){
+            words[w]--;
+            }
+        }
+        for(char w : ransomNote){
+            if(words[w])
+            return false;
+        }
+        return true;
+    }
+};
