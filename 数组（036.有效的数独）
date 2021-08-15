@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        vector<vector<int>> rows(9, vector<int>(9, 0));
+        vector<vector<int>> columns(9, vector<int>(9, 0));
+        vector<vector<int>> boxes(9, vector<int>(9, 0));
+        for(int r = 0; r < 9; r++){
+            for(int c = 0; c < 9; c++){
+                if(board[r][c] != '.'){
+                   int x = board[r][c] - '1';
+                    int b = (r / 3) * 3 + c / 3;
+                    if(rows[r][x] == 0 && columns[c][x] == 0 && boxes[b][x] == 0){
+                        rows[r][x] = 1;
+                        columns[c][x] = 1;
+                        boxes[b][x] = 1;
+                    }
+                    else{
+                        return false;
+                    }
+                } 
+                
+            }
+        }
+        return true;
+    }
+};
