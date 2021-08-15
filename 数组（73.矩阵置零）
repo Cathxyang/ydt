@@ -1,0 +1,18 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        vector<int> rows(matrix.size()), columns(matrix[0].size());
+        for(int i = 0; i < matrix.size(); i++){
+            for(int j = 0; j < matrix[0].size(); j++){
+                if(!matrix[i][j])
+                rows[i] = columns[j] = 1;
+            }
+        }
+        for(int i = 0; i < matrix.size(); i++){
+            for(int j = 0; j < matrix[0].size(); j++){
+                if(rows[i] || columns[j])
+                matrix[i][j] = 0;
+            }
+        }
+    }
+};
